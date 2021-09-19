@@ -1,17 +1,17 @@
 module.exports = function(sequelize, dataTypes) {
-    let alias = "Artistas";
+    let alias = "Artista";
 
     let cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER(11),
             primaryKey: true,
             autoIncrement: true
         },
         nombre: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING(45)
         },
         apellido: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING(45)
         }
     }
 
@@ -24,10 +24,10 @@ module.exports = function(sequelize, dataTypes) {
     let Artistas = sequelize.define(alias, cols, config)
 
     Artistas.associate = function(models){
-        Artistas.belongsTo(models.Canciones,{
+        Artistas.belongsTo(models.Cancion,{
             as: "canciones", 
             /*through: ""*/
-            foreingnKey: "artista_id"
+            foreignKey: "artistas_id"
         });
     }
 

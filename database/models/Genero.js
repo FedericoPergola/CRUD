@@ -1,14 +1,14 @@
 module.exports = function(sequelize, dataTypes) {
-    let alias = "Generos";
+    let alias = "Genero";
 
     let cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER(11),
             primaryKey: true,
             autoIncrement: true
         },
         name: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING(45)
         }
     }
 
@@ -20,9 +20,9 @@ module.exports = function(sequelize, dataTypes) {
     let Generos = sequelize.define(alias, cols, config)
 
     Generos.associate = function(models){
-        Generos.hasMany(models.Canciones,{
+        Generos.hasMany(models.Cancion,{
             as: "canciones", 
-            foreingnKey: "genero_id"
+            foreignKey: "genero_id"
         });
     }
 

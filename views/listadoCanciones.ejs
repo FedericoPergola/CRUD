@@ -1,3 +1,8 @@
-<%- include ('header') -%> 
-
-<%- include ('footer') -%> 
+<h1>Listado canciones</h1>
+<ul>
+    <%for (let i=0; i < canciones.lenght; i++) {%>
+    <li>
+        <%=canciones[i].titulo%> 
+    </li>
+        <% } %>
+</ul>
