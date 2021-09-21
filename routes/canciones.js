@@ -4,11 +4,12 @@ var cancionesController = require("../controllers/cancionesController");
 
 //CREACION
 
-router.get("/crear", cancionesController.crear);
-router.post("/crear", cancionesController.guardado);
+router.get("/", cancionesController.canciones);
+router.post("/", cancionesController.guardado);
+ router.get("/:id", cancionesController.detalle);
+// router.put("/:id", 
+ router.delete("/:id", cancionesController.borrar) 
+// router.get("/albumes/canciones",
 
-//LECTURA
-
-router.get("/", cancionesController.listado);
 
 module.exports = router;

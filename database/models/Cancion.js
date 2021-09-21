@@ -14,7 +14,20 @@ module.exports = function(sequelize, dataTypes){
         duracion:{
             type: dataTypes.INTEGER(11)
  
+        },
+        generoId:{
+            type: dataTypes.STRING,
+            field: "genero_id"
+        },
+        albumId:{
+            type: dataTypes.STRING,
+            field: "album_id"
+        },
+        artistaId:{
+            type: dataTypes.STRING,
+            field: "artista_id"
         }
+
  
  
   }
