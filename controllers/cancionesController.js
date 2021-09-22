@@ -1,3 +1,4 @@
+//const { where } = require("sequelize/types");
 const { response } = require("../app");
 let db = require("../database/models")
 
@@ -45,6 +46,7 @@ let cancionesController = {
 },
     borrar: function (req, res) {
         db.Cancion.destroy({
+           //from: canciones,
             where: {
                 id: req.params.id
             }
@@ -53,8 +55,30 @@ let cancionesController = {
             })
         })
         
-    }
+    },
 
+    editar: async(req, res) => {
+        await db.Cancion.update(req.body, {
+        where: {
+            id: req.params.id
+        }});
+        res.json({
+            success: "Edicion correcta"
+        })   
+       
+    },
+
+    album: function (req, res){
+        db.Cancion.findAll({
+            where: {
+            album_id: req.params.id
+        }})
+        .then(canciones => {
+            return res.status(200).json(canciones)
+        })
+        
+    }
+    
 }
 
 module.exports = cancionesController
